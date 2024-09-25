@@ -1,3 +1,9 @@
+"""
+Run un:
+    1000
+    140.2152
+"""
+
 import json
 import time
 from urllib import request, parse
@@ -26,11 +32,11 @@ format=json&formatversion=2".format(safe_title)
     inbound = clean_if_key(jpage,"links")
     outbound = clean_if_key(jpage,"linkshere")
     return {"title": pageTitle,
-            "in-links":list(inbound),
-            "out-links":list(outbound)}
+            "in_links":list(inbound),
+            "out_links":list(outbound)}
 
 def flatten_network(page):
-    return page["in-links"]+page["out-links"]
+    return page["in_links"]+page["out_links"]
 
 def page_to_edges(page):
     a = [(page['title'], p) for p in page['out_links']]
